@@ -14,6 +14,9 @@ import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,8 +45,12 @@ public class BoardController {
 
 		@RequestMapping("/detail/{bno}") 
 	    private String boardDetail(@PathVariable int bno, Model model) throws Exception{
-	        
-	        model.addAttribute("detail", mBoardService.boardDetailService(bno));
+	        BoardVO b = new BoardVO();
+	        b = mBoardService.boardDetailService(bno);
+	        b.setContent(b.getContent().replaceAll("<", "&lt"));
+	        b.setContent(b.getContent().replaceAll(">", "&gt"));
+	        b.setContent(b.getContent().replaceAll("\n", "<br>"));
+	        model.addAttribute("detail", b);
 	        model.addAttribute("files", mBoardService.fileDetailService(bno)); //추가
 	        return "detail";
 	    }
@@ -134,6 +141,7 @@ public class BoardController {
 	        board.setWriter(request.getParameter("writer"));
 	        
 	        
+	        
 	        if(files.isEmpty()){ //업로드할 파일이 없을 시
 	            mBoardService.boardInsertService(board); //게시글 insert
 	        }else{
@@ -162,7 +170,7 @@ public class BoardController {
 	        }
 	        
 	        
-	        return "redirect:/list";
+	        return "redirect:/detail/{"+board.getBno() +"}";
 
 	    }
 

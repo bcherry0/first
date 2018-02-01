@@ -10,6 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             COUNT(*)
         FROM BOARD
     </select>
+    
     <select id="boardList" resultType="com.example.demo.board.domain.BoardVO">
         SELECT
             *
@@ -36,6 +37,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
        FILES (FNO, BNO, FILENAME, FILEORINAME, FILEURL)
        VALUES (#{fno},#{bno},#{fileName},#{fileOriName},#{fileUrl})
 	</insert>
+	
 	<select id="fileDetail" parameterType="int" resultType="com.example.demo.board.domain.FileVO">
 	    SELECT
 	        *
