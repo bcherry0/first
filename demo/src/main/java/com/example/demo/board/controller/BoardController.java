@@ -170,7 +170,7 @@ public class BoardController {
 	        }
 	        
 	        
-	        return "redirect:/detail/{"+board.getBno() +"}";
+	        return "redirect:/list";
 
 	    }
 
