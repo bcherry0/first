@@ -14,9 +14,7 @@ import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.TransactionDefinition;
-import org.springframework.transaction.TransactionStatus;
-import org.springframework.transaction.support.DefaultTransactionDefinition;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -131,6 +129,7 @@ public class BoardController {
 	    }
 
 	    @RequestMapping("/insertProc")
+	    @Transactional
 	    private String boardInsertProc(HttpServletRequest request, @RequestPart MultipartFile files) throws Exception{
 	        
 	        BoardVO board = new BoardVO();
@@ -170,7 +169,8 @@ public class BoardController {
 	        }
 	        
 	        
-	        return "redirect:/list";
+	        //return "redirect:/list";
+	        return "redirect:/detail/"+board.getBno();
 
 	    }
 
