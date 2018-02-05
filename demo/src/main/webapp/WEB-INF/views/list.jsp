@@ -20,7 +20,7 @@
     </div>
     
     <div class="col-xs-12">
-        <table class="table table-hover">
+        <table class="table table-hover"  style="font-size:13px">
             <tr>
                 <th>No</th>
                 <th>제목</th>
@@ -32,7 +32,7 @@
                       <td>${l.bno}</td>
                       <td>${l.subject}</td>
                       <td>${l.writer}</td>
-                      <td><fmt:formatDate value="${l.reg_date}" pattern="yyyy.MM.dd HH:mm:ss"/></td>
+                      <td><fmt:formatDate value="${l.reg_date}" pattern="yyyy.MM.dd HH:mm"/></td>
                   </tr>
               </c:forEach>
         </table>

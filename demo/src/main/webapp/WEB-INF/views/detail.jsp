@@ -20,7 +20,7 @@
  
     <div class="col-xs-12">
         <form action="/insertProc" method="post">
-            <dl class="dl-horizontal">
+            <dl class="dl-horizontal" style="font-size:13px">
               <dt>제목</dt>
               <dd>${detail.subject}</dd>
               

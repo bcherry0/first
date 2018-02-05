@@ -45,8 +45,14 @@ public class BoardController {
 	    private String boardDetail(@PathVariable int bno, Model model) throws Exception{
 	        BoardVO b = new BoardVO();
 	        b = mBoardService.boardDetailService(bno);
+	        b.setSubject(b.getSubject().replaceAll("<", "&lt"));
+	        b.setSubject(b.getSubject().replaceAll(">", "&gt"));
+	        b.setSubject(b.getSubject().replaceAll("\"", "&quot"));
+	        b.setSubject(b.getSubject().replaceAll("\n", "<br>"));
+	        
 	        b.setContent(b.getContent().replaceAll("<", "&lt"));
 	        b.setContent(b.getContent().replaceAll(">", "&gt"));
+	        b.setContent(b.getContent().replaceAll("\"", "&quot;"));
 	        b.setContent(b.getContent().replaceAll("\n", "<br>"));
 	        model.addAttribute("detail", b);
 	        model.addAttribute("files", mBoardService.fileDetailService(bno)); //추가
@@ -177,7 +183,11 @@ public class BoardController {
 	    @RequestMapping("/update/{bno}") //게시글 수정폼 호출  
 	    private String boardUpdateForm(@PathVariable int bno, Model model) throws Exception{
 	        
-	        model.addAttribute("detail", mBoardService.boardDetailService(bno));
+	        BoardVO b = new BoardVO();
+	        b = mBoardService.boardDetailService(bno);
+	        b.setSubject(b.getSubject().replaceAll("\"", "&quot;"));
+	        model.addAttribute("detail", b);
+
 	        
 	        return "update";
 	    }

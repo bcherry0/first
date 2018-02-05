@@ -23,11 +23,12 @@
           </div>
           <div class="form-group">
             <label for="content">내용</label>
-            <textarea class="form-control" id="content" name="content" rows="3">${detail.content}</textarea>
+            <textarea class="form-control" id="content" name="content" rows="10">${detail.content}</textarea>
           </div>
           <input type="hidden" name="bno" value="${detail.bno}"/>
           <button type="submit" class="btn btn-primary btn-sm" style="float:right;">수정</button>
         </form>
+        <button class="btn btn-primary btn-sm" style="float:right;"" onclick="location.href='/detail/${detail.bno}'">취소</button>
     </div>
 </div>
 </body>
