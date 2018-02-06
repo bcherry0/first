@@ -1,12 +1,8 @@
 package com.example.demo.board.service;
 
 import java.util.List;
-
 import javax.annotation.Resource;
-
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.example.demo.board.domain.BoardVO;
 import com.example.demo.board.domain.FileVO;
 import com.example.demo.board.mapper.BoardMapper;
