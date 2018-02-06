@@ -36,8 +36,8 @@
           </div>
           
           <button type="submit" class="btn btn-primary btn-sm" style="float:right;">작성</button>
-          
         </form>
+          <button class="btn btn-primary btn-sm" style="float:right;" onclick="location.href='/list'">취소</button>
     </div>
 </div> 
 </body>
