@@ -65,8 +65,6 @@
     <div class="container">
         <div class="commentList"></div>
     </div>
-</div>
- 
 <!--                     추가                         -->
 <%@ include file="comments.jsp" %>
 

@@ -28,7 +28,7 @@
           <input type="hidden" name="bno" value="${detail.bno}"/>
           <button type="submit" class="btn btn-primary btn-sm" style="float:right;">수정</button>
         </form>
-        <button class="btn btn-primary btn-sm" style="float:right;"" onclick="location.href='/detail/${detail.bno}'">취소</button>
+        <button class="btn btn-primary btn-sm" style="float:right;" onclick="location.href='/detail/${detail.bno}'">취소</button>
     </div>
 </div>
 </body>
