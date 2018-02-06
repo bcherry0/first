@@ -47,7 +47,7 @@ public class BoardController {
 	        b = mBoardService.boardDetailService(bno);
 	        b.setSubject(b.getSubject().replaceAll("<", "&lt"));
 	        b.setSubject(b.getSubject().replaceAll(">", "&gt"));
-	        b.setSubject(b.getSubject().replaceAll("\"", "&quot"));
+	        b.setSubject(b.getSubject().replaceAll("\"", "&quot;"));
 	        b.setSubject(b.getSubject().replaceAll("\n", "<br>"));
 	        
 	        b.setContent(b.getContent().replaceAll("<", "&lt"));
