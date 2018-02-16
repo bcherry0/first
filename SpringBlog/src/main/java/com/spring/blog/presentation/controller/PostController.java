@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.spring.blog.domain.model.Entity.Post;
 import com.spring.blog.infrastructure.dao.PostDao;
@@ -19,7 +20,12 @@ public class PostController {
 	@Autowired
 	private PostDao postDao;
 
-	@RequestMapping("/write")
+	@RequestMapping(value = "/write", method = RequestMethod.GET)
+	public String form(Post post) {
+		return "form";
+	}
+	
+	@RequestMapping(value = "/write", method = RequestMethod.POST)
 	public String write(Post post) {
 		post.setRegDate(new Date());
 		return "redirect:/post/" + postDao.save(post).getId();
@@ -35,6 +41,10 @@ public class PostController {
 	@RequestMapping("/{id}")
 	public String view(Model model, @PathVariable int id) {
 		Post post = postDao.findOne(id);
+        post.setContent(post.getContent().replaceAll("<", "&lt"));
+        post.setContent(post.getContent().replaceAll(">", "&gt"));
+        post.setContent(post.getContent().replaceAll("\"", "&quot;"));
+        post.setContent(post.getContent().replaceAll("\n", "<br>"));
 		model.addAttribute("post", post);
 		return "post";
 	}
